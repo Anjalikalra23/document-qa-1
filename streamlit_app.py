@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 
 # Show title and description.
-st.title("📄 Document question answering")
+st.title("Lab 1- Anjali Kalra")
 st.write(
     "Upload a document below and ask a question about it – GPT will answer! "
     "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). "
@@ -51,3 +51,22 @@ else:
 
         # Stream the response to the app using `st.write_stream`.
         st.write_stream(stream)
+
+# Configure the page
+st.set_page_config(
+    page_title="Multi-page Labs App",
+    page_icon="📚",
+    layout="wide"
+)
+
+# Create navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.selectbox("Choose a Lab:", ["Lab 2 (Default)", "Lab 1"])
+
+# Import and run the selected page
+if page == "Lab 1":
+    import lab1
+    lab1.run()
+elif page == "Lab 2 (Default)":
+    import lab2
+    lab2.run()
